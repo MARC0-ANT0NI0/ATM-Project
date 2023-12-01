@@ -4,6 +4,7 @@ const amounts = Object.values(avaliableMoney);
 let totalMoney = 1350;
 let varAmount = 0;
 let givenAmount = 0;
+let myMoney = 0; 
 let messageElement = document.getElementById("message");
 
 const calculo = () => {
@@ -15,6 +16,7 @@ const calculo = () => {
                 amounts[i] = amounts[i] - varAmount;
                 varAmount = varAmount * keys[i];
                 myMoney = myMoney - varAmount;
+                console.log(myMoney);
                 totalMoney = totalMoney - varAmount;
                 messageElement.innerHTML += "<p>Se entrega " + givenAmount + " billetes de $" + keys[i] + "</p>";
             } else {
@@ -24,6 +26,7 @@ const calculo = () => {
                     amounts[i] = amounts[i] - varAmount;
                     varAmount = varAmount * keys[i];
                     myMoney = myMoney - varAmount;
+                    console.log(myMoney);
                     totalMoney = totalMoney - varAmount;
                     messageElement.innerHTML += "<p>Se entrega " + givenAmount + " billetes de $" + keys[i] + "</p>";
                 }
@@ -32,18 +35,17 @@ const calculo = () => {
     }
 }
 
-let userInput = " ";
-let myMoney = ""; 
-let answer = " ";
+const amount = () => {
+    myMoney = parseInt(document.getElementById('amountInput').value);
+    }
 
 do {
-    userInput = prompt("Por favor ingrese la cantidad a retirar:");
-    myMoney = parseInt(userInput);
+    document.getElementById('retireButton').addEventListener('click', amount);
     if (totalMoney >= myMoney)  {
         calculo();
     } else {
         messageElement.innerHTML ="<p>El cajero no tiene suficiente dinero para entregar esta cantidad</p>"
     }
-    answer = prompt("¿Desea realizar otra operación? S/N:")
-} while (answer.toUpperCase() !=='N');
+} while (myMoney !== 0);
+//} while (answer.toUpperCase() !=='N');
 
