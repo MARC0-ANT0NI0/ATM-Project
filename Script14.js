@@ -35,17 +35,16 @@ const calculo = () => {
     }
 }
 
-const amount = () => {
+const capturingAmount = () => {
     myMoney = parseInt(document.getElementById('amountInput').value);
-    }
-
-do {
-    document.getElementById('retireButton').addEventListener('click', amount);
     if (totalMoney >= myMoney)  {
         calculo();
     } else {
         messageElement.innerHTML ="<p>El cajero no tiene suficiente dinero para entregar esta cantidad</p>"
     }
-} while (myMoney !== 0);
+}
+
+document.getElementById('retireButton').addEventListener('click', capturingAmount);
+
 //} while (answer.toUpperCase() !=='N');
 
