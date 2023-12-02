@@ -6,6 +6,7 @@ let varAmount = 0;
 let givenAmount = 0;
 let myMoney = 0; 
 let messageElement = document.getElementById("message");
+let answer = ' '
 
 const calculo = () => {
     for (let i = 4; i > -1; i--) {
@@ -44,7 +45,12 @@ const capturingAmount = () => {
     }
 }
 
+const capturingAnswer = () => {
+    answer = document.getElementById('answerInput').value;
+}
+
 document.getElementById('retireButton').addEventListener('click', capturingAmount);
+document.getElementById('answeringButton').addEventListener('click', capturingAnswer);
 
 //} while (answer.toUpperCase() !=='N');
 
