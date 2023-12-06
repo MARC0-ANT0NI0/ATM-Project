@@ -7,13 +7,14 @@ let givenAmount = 0;
 let myMoney = 0; 
 let messageElement = document.getElementById("message");
 let byeElement = document.getElementById('bye');
+let amountElement = document.getElementById('amountInput');
 let answerElement = document.getElementById('answerInput');
-let answer = ' ';
+let answer = 'S';
 
 const resetVariables = () => {
-    answer = '';
     messageElement.innerHTML = '';
     answerElement.value ='';
+    amountElement.value ='';
 }
 
 const calculo = () => {
@@ -55,21 +56,17 @@ const capturingAmount = () => {
 
 const capturingAnswer = () => {
     answer = answerElement.value.toUpperCase();
-    resetVariables();
+    if(answer === 'S')  {
+        resetVariables();
+    }  
 }
 
-document.getElementById('retireButton').addEventListener('click', () => {
-    do {
-        capturingAmount();
-        document.getElementById('answeringButton').addEventListener('click', capturingAnswer);
-    } while (answer === "S");
-
-
+const finalCondition = () => {
     if (answer === 'N') {
         byeElement.innerHTML += "<p>Gracias por usar cajeros CTM</p>";
     }
-});
+}
 
-
-//} while (answer.toUpperCase() !=='N');
-
+document.getElementById('retireButton').addEventListener('click', capturingAmount);
+document.getElementById('answeringButton').addEventListener('click', capturingAnswer);
+document.getElementById('answeringButton').addEventListener('click', finalCondition);
