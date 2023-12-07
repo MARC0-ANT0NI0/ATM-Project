@@ -3,17 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="ATM-Style.css">
     <title>Cajero</title>
 </head>
+<body>
     <h1>Bienvenido a Cajeros CTM</h1>
-    <label for="amountInput">Ingresa la cantidad a retirar:</label>
-    <input type="number" id="amountInput" required>
+    <label for="amountInput" class="line">Ingresa la cantidad a retirar:</label>
+    <input type="number" id="amountInput" class="line2" required>
     <button type="button" id="retireButton">Aceptar</button>
-    <div id="message"></div>
-    <label for="answerInput">¿Desea realizar otra operación? S/N</label>
-    <input type="text" id="answerInput">
+    <div id="message" class="message"></div>
+    <label for="answerInput" class="line">¿Desea realizar otra operación? S/N</label>
+    <input type="text" id="answerInput" class="line2">
     <button type="button" id="answeringButton">Aceptar</button>
-    <div id="bye"></div>
+    <div id="bye" class="message"></div>
 
     <script src="Script14.js"></script>
 </body>

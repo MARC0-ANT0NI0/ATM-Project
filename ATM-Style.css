@@ -1,0 +1,40 @@
+body    {
+    background-image: linear-gradient(to top left, rgb(36, 36, 133) 20%, rgb(221, 98, 15));
+    min-height  : 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+}
+
+h1  {
+    text-align: center;
+    font-size: 2.7em;
+}
+
+.line   {
+    display: block;
+    text-align: center;
+    font-size: 1.5em;
+    margin: 20px 0;
+}
+
+.line2  {
+    display: block;
+    text-align: center;
+    font-size: 1.3em;
+    margin: 20px auto;
+}
+
+button {
+    display: block;
+    margin: auto;
+    font-size: 1.1em;
+}
+
+.message    {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1.1em;
+    display: grid;
+    justify-content: center;
+}
+
+/*Tenemos que lograr que el elemento "bye" se convierta en una ventana modal que impedirá que se realicen más operaciones, para eso se le quitará la calse "message" y se le creará una clase propia que se activará cuando el valor en la variable "answer" sea "N"*/
