@@ -10,45 +10,35 @@ let byeElement = document.getElementById('bye');
 let amountElement = document.getElementById('amountInput');
 let answerElement = document.getElementById('answerInput');
 let answer = 'S';
-
-const resetVariables = () => {
-    messageElement.innerHTML = '';
-    answerElement.value ='';
-    amountElement.value ='';
-}
+let number = 0;
 
 const calculo = () => {
-    for (let i = 4; i > -1; i--) {
-        if (myMoney >= keys[i]) {
-            varAmount = Math.floor(myMoney / keys[i]);
-            if (amounts[i] >= varAmount) {
                 givenAmount = varAmount;
-                amounts[i] = amounts[i] - varAmount;
-                varAmount = varAmount * keys[i];
+                amounts[number] = amounts[number] - varAmount;
+                varAmount = varAmount * keys[number];
                 myMoney = myMoney - varAmount;
                 console.log(myMoney);
                 totalMoney = totalMoney - varAmount;
-                messageElement.innerHTML += "<p>Se entrega " + givenAmount + " billetes de $" + keys[i] + "</p>";
-            } else {
-                if(amounts[i] > 0) {
-                    varAmount = amounts[i];
-                    givenAmount = varAmount;
-                    amounts[i] = amounts[i] - varAmount;
-                    varAmount = varAmount * keys[i];
-                    myMoney = myMoney - varAmount;
-                    console.log(myMoney);
-                    totalMoney = totalMoney - varAmount;
-                    messageElement.innerHTML += "<p>Se entrega " + givenAmount + " billetes de $" + keys[i] + "</p>";
+                messageElement.innerHTML += "<p>Se entrega " + givenAmount + " billetes de $" + keys[number] + "</p>";
+            }
+
+const capturingAmount = () => {
+    myMoney = parseInt(document.getElementById('amountInput').value); //Se captura el valor del ID "amounInput" y se guarda en "myMoney"
+    if (totalMoney >= myMoney)  {
+        for (let i = 4; i > -1; i--) { 
+            number = i; //En las lineas dentro de esta función estoy usando [i] para hacer el cambio de números tanto de keys como de values pero llega un punto en que se llama a la función "calculo" y esta no tiene definida la variable [i] que es de ambito local, sólo para el bucle "for", por eso hice la variable number que es de alcance global, esta variable toma el valor actual de [i] y puede ser usada en cualquier función del programa, entonces "calculo" sí la puede usar.
+            if (myMoney >= keys[i]) { 
+                varAmount = Math.floor(myMoney / keys[i]); //Se divide "myMoney" entre la key actual y con "Math.floor" se obtiene el cociente entero de esa división y se guarda en "varAmount".
+                if (amounts[i] >= varAmount) { 
+                    calculo();
+                } else {
+                    if(amounts[i] > 0) {
+                        varAmount = amounts[i];
+                        calculo();
+                    }
                 }
             }
         }
-    }
-}
-
-const capturingAmount = () => {
-    myMoney = parseInt(document.getElementById('amountInput').value);
-    if (totalMoney >= myMoney)  {
-        calculo();
     } else {
         messageElement.innerHTML ="<p>El cajero no tiene suficiente dinero para entregar esta cantidad</p>"
     }
@@ -59,6 +49,12 @@ const capturingAnswer = () => {
     if(answer === 'S')  {
         resetVariables();
     }  
+}
+
+const resetVariables = () => {
+    messageElement.innerHTML = '';
+    answerElement.value ='';
+    amountElement.value ='';
 }
 
 const finalCondition = () => {
