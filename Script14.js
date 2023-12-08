@@ -59,7 +59,7 @@ const resetVariables = () => {
 
 const finalCondition = () => {
     if (answer === 'N') {
-        byeElement.innerHTML += "<p>Gracias por usar cajeros CTM</p>";
+        byeElement.innerHTML += "Gracias por usar cajeros CTM";
     }
 }
 
