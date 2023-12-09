@@ -60,6 +60,7 @@ const resetVariables = () => {
 const finalCondition = () => {
     if (answer === 'N') {
         byeElement.innerHTML += "Gracias por usar cajeros CTM";
+        byeElement.style.transform = 'scale(1, 1)';
     }
 }
 
